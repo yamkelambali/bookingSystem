@@ -1,8 +1,12 @@
 package com.startup.entity;
 
+/**
+ * @author Yamkela Mbali
+ * desc : Entity for User
+ */
 public class User {
 
-    private String username, password, userId, name, surname, cellNo, emailAddress, loginStatus;
+    private String username, password, userId, name, surname, cellNo, emailAddress;
 
     private User(Builder builder){
         this.username = builder.username;
@@ -12,7 +16,6 @@ public class User {
         this.surname = builder.name;
         this.cellNo = builder.cellNo;
         this.emailAddress = builder.emailAddress;
-        this.loginStatus = builder.loginStatus;
 
     }
 
@@ -44,9 +47,7 @@ public class User {
         return emailAddress;
     }
 
-    public String getLoginStatus() {
-        return loginStatus;
-    }
+
 
     @Override
     public String toString() {
@@ -58,7 +59,7 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", cellNo='" + cellNo + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
-                ", loginStatus='" + loginStatus + '\'' +
+
                 '}';
     }
 
@@ -110,7 +111,7 @@ public class User {
             this.userId = user.userId;
             this.cellNo = user.cellNo;
             this.emailAddress = user.emailAddress;
-            this.loginStatus = user.loginStatus;
+
 
             return this;
         }

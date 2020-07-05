@@ -1,5 +1,8 @@
 package com.startup.entity;
-
+/**
+ * @author Yamkela Mbali
+ * desc : Entity for User
+ */
 public class Bill {
 
     private String billNo, appointId, patientId, amount;
