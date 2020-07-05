@@ -23,6 +23,6 @@ public class UserFactory {
                 .setCellNo(cellNo)
                 .setEmailAddress(emailAddress)
                 .build();
-        return null;
+        return user;
     }
 }
