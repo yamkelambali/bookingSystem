@@ -2,12 +2,12 @@ package com.startup.entity;
 
 public class Account {
 
-    private String name, surname, username, password;
-    private int cellNo;
+    private String name, surname, username, password, cellNo;
+
 
     private Account(Builder builder){
         this.name = builder.name;
-        this.password = builder.surname;
+        this.surname = builder.surname;
         this.username = builder.username;
         this.password = builder.password;
         this.cellNo = builder.cellNo;
@@ -29,6 +29,10 @@ public class Account {
         return password;
     }
 
+    public String getCellNo(){
+        return cellNo;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -41,8 +45,7 @@ public class Account {
     }
 
     public static class Builder{
-        private String name, surname, username, password;
-        private int cellNo;
+        private String name, surname, username, password, cellNo;
 
         public Builder setName(String name){
             this.name = name;
@@ -54,7 +57,7 @@ public class Account {
             return this;
         }
 
-        public Builder setUsername(String username){
+        public Builder setUsername(String username) {
             this.username = username;
             return this;
         }
@@ -64,9 +67,9 @@ public class Account {
             return this;
         }
 
-        public Builder setCellNo(int cellNo){
+        public Builder setCellNo(String cellNo){
             this.cellNo = cellNo;
-            return  this;
+            return this;
         }
 
         public Builder copy(Account account){
