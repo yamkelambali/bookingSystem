@@ -9,8 +9,10 @@ import com.startup.util.GenericHelper;
 
 public class PatientFactory {
 
-    public static Patient createPatient(String historyReport, String medicalAidId){
+    public static Patient createPatient(String patientID, String historyReport, String medicalAidId){
 
+        Patient patient = new Patient.Builder()
+                .setPatientId(patientID)
                 .setHistoryReport(historyReport)
                 .setMedicalAidId(medicalAidId)
                 .build();
