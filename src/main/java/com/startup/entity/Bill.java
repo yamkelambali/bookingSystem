@@ -44,24 +44,20 @@ public class Bill {
         private String billNo, appointId, patientId, amount;
 
         public Builder setBillNo(String billNo){
-
             this.billNo = billNo;
             return this;
         }
 
         public Builder setAppointId(String appointId){
-
             this.appointId = appointId;
             return this;
         }
 
         public Builder setPatientId(String patientId){
-
             this.patientId = patientId;
             return this;
         }
         public Builder setAmount(String amount){
-
             this.amount = amount;
             return this;
         }
