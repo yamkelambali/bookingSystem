@@ -2,6 +2,11 @@ package com.startup.entity;
 
 import java.util.*;
 
+/**
+ * @author Lene Prinsloo
+ * desc : Entity for Appointment
+ */
+
 public class Appointment {
 
     private String appointID, patientNo, docID, appointDate, appointTime;
@@ -26,12 +31,13 @@ public class Appointment {
 
     @Override
     public String toString(){
-        return "Details: "+
-                "Appointment ID   : "+ appointID + '\''+
-                "Patient No       :"+ patientNo + '\''+
-                "Doctor ID        : "+ docID + '\''+
-                "Appointment Date : "+ appointDate + '\''+
-                "Appointment Time : "+ appointTime;
+        return "Appointments{" +
+                "appointID='" + appointID + '\'' +
+                ", patientNo='" + patientNo + '\'' +
+                ", docID='" + docID + '\'' +
+                ", appointDate='" + appointDate + '\'' +
+                ", appointTime='" + appointTime + '\'' +
+                '}';
     }
 
     public static class Builder{
