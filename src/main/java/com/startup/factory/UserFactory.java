@@ -14,7 +14,7 @@ public class UserFactory {
 
     public static User createUser(String username, String password, String name, String surname, String cellNo, String emailAddress ){
 
-        String userId = GenericHelper.generateID();
+        String userId = GenericHelper.generateId();
         User user = new User.Builder().setUserId(userId)
                 .setUsername(username)
                 .setPassword(password)
@@ -23,6 +23,6 @@ public class UserFactory {
                 .setCellNo(cellNo)
                 .setEmailAddress(emailAddress)
                 .build();
-        return null;
+        return user;
     }
 }
