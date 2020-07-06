@@ -12,7 +12,7 @@ public class UserFactoryTest {
     public void createUser() {
 
         User user = UserFactory.createUser("AsongeD", "@song3", "Asonge", "Dyosini", "0670860456", "AsongeD@gmail.com");
-        Assert.assertNull(user);
+        Assert.assertNotNull(user);
 
     }
 }
