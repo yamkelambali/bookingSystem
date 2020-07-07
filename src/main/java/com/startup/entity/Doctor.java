@@ -1,5 +1,10 @@
 package com.startup.entity;
 
+/**
+ * @author Lene Prinsloo
+ * desc : Entity for Doctor
+ */
+
 public class Doctor {
 
     private String docId, dept, specialisation;
@@ -24,26 +29,27 @@ public class Doctor {
 
     @Override
     public String toString() {
-        return "Doctor Details"+
-                "Doctor ID      : "+docId+ '\''+
-                "Department     : "+dept+'\''+
-                "Specialisation : "+specialisation+'\'';
+        return "Doctor{" +
+                "docID='" + docId + '\'' +
+                ", dept='" + dept + '\'' +
+                ", specialisation= '" + specialisation + '\'' +
+                '}';
     }
 
     public static class Builder{
 
         private String docId, dept, specialisation;
 
-        private Builder setDoctorId(String docId){
+        public Builder setDoctorId(String docId){
             this.docId = docId;
             return this;
         }
 
-        private Builder setDept(String dept){
+        public Builder setDept(String dept){
             this.dept = dept;
             return this;
         }
-        private Builder setSpecialisation(String specialisation){
+        public Builder setSpecialisation(String specialisation){
             this.specialisation = specialisation;
             return this;
         }
