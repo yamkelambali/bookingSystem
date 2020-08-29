@@ -9,7 +9,6 @@
         <module name="bookingSystem-master" />
         <module name="bookingSytem" />
         <module name="bookingSystem" />
-        <module name="bookingSytem" />
       </profile>
     </annotationProcessing>
   </component>
