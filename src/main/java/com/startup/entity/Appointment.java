@@ -10,6 +10,7 @@ import java.util.*;
 public class Appointment {
 
     private String appointID, patientNo, docID, appointDate, appointTime;
+    // private appointDate Date();
 
     private Appointment(Builder builder){
         this.appointID = builder.appointID;
