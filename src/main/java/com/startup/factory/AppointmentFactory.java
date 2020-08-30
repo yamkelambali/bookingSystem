@@ -1,6 +1,8 @@
 package com.startup.factory;
 
 import com.startup.entity.Appointment;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * @author Lene Prinsloo
@@ -9,14 +11,14 @@ import com.startup.entity.Appointment;
 
 public class AppointmentFactory {
 
-    public static Appointment createAppointment(String appointID, String patientNo, String docID, String appointDate, String appointTime){
+    public static Appointment createAppointment(String appointID, String patientNo, String docID, LocalDate localDate, LocalTime localTime){
 
         Appointment appointment = new Appointment.Builder()
                 .setAppointID(appointID)
                 .setPatientNo(patientNo)
                 .setDocID(docID)
-                .setAppointDate(appointDate)
-                .setAppointTime(appointTime)
+                .setLocalDate(localDate)
+                .setLocalTime(localTime)
                 .build();
 
                 return appointment;
