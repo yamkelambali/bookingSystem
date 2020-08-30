@@ -1,7 +1,4 @@
 package com.startup.Repository.impl;
-/**
- * @author Michael Bezuidenhout
- */
 
 import com.startup.entity.Bill;
 

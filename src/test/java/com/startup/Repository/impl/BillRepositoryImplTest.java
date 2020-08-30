@@ -1,7 +1,4 @@
 package com.startup.Repository.impl;
-/**
- * @author Michael Bezuidenhout
- */
 
 import com.startup.entity.Bill;
 import com.startup.factory.BillFactory;
@@ -9,8 +6,6 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
-import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BillRepositoryImplTest {
