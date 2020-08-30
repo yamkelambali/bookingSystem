@@ -3,8 +3,8 @@ package com.startup.factory;
 import com.startup.entity.Appointment;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * @author Lene Prinsloo
@@ -15,8 +15,7 @@ public class AppointmentFactoryTest {
 
     @Test
     public void createAppointment() {
-
-        Appointment appointment = AppointmentFactory.createAppointment("0706CP071401", "CP071401", "Harding0411", "07/06/2020", "15:30:00");
+        Appointment appointment = AppointmentFactory.createAppointment("0706CP071401", "CP071401", "Harding0411", LocalDate.of(2020,8,25), LocalTime.of(15,0) );
         Assert.assertNotNull(appointment);
     }
 }
