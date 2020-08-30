@@ -1,6 +1,7 @@
 package com.startup.entity;
 
-import java.util.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * @author Lene Prinsloo
@@ -9,15 +10,16 @@ import java.util.*;
 
 public class Appointment {
 
-    private String appointID, patientNo, docID, appointDate, appointTime;
-    // private appointDate Date();
+    private String appointID, patientNo, docID;
+    private LocalDate localDate;
+    private LocalTime localTime;
 
-    private Appointment(Builder builder){
+    public Appointment(Builder builder){
         this.appointID = builder.appointID;
         this.patientNo = builder.patientNo;
         this.docID = builder.docID;
-        this.appointDate = builder.appointDate;
-        this.appointTime = builder.appointTime;
+        this.localDate = builder.localDate;
+        this.localTime = builder.localTime;
     }
 
     public String getAppointID(){ return appointID;}
@@ -26,9 +28,10 @@ public class Appointment {
 
     public String getDocID(){ return docID;}
 
-    public String getAppointDate(){ return appointDate;}
+    public LocalDate getLocalDate(){ return localDate;}
 
-    public String getAppointTime(){ return appointTime;}
+    public LocalTime getLocalTime(){ return localTime;}
+
 
     @Override
     public String toString(){
@@ -36,13 +39,15 @@ public class Appointment {
                 "appointID='" + appointID + '\'' +
                 ", patientNo='" + patientNo + '\'' +
                 ", docID='" + docID + '\'' +
-                ", appointDate='" + appointDate + '\'' +
-                ", appointTime='" + appointTime + '\'' +
+                ", appointDate='" + localDate + '\'' +
+                ", localTime='" + localTime + '\'' +
                 '}';
     }
 
     public static class Builder{
-        private String appointID, patientNo, docID, appointDate, appointTime;
+        private String appointID, patientNo, docID;
+        private LocalDate localDate;
+        private LocalTime localTime;
 
         public Builder setAppointID(String appointID){
 
@@ -62,24 +67,25 @@ public class Appointment {
             return this;
         }
 
-        public Builder setAppointDate(String appointDate){
+        public Builder setLocalDate(LocalDate localDate){
 
-            this.appointDate = appointDate;
+            this.localDate = localDate;
             return this;
         }
 
-        public Builder setAppointTime(String appointTime){
+        public Builder setLocalTime(LocalTime localTime){
 
-            this.appointTime = appointTime;
+            this.localTime = localTime;
             return this;
         }
+
 
         public Builder copy(Appointment appointment){
             this.appointID = appointment.appointID;
             this.patientNo = appointment.patientNo;
             this.docID = appointment.docID;
-            this.appointDate = appointment.appointDate;
-            this.appointTime = appointment.appointTime;
+            this.localDate = appointment.localDate;
+            this.localTime = appointment.localTime;
             return this;
         }
         public Appointment build(){
