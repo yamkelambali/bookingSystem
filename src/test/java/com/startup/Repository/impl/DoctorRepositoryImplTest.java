@@ -42,6 +42,7 @@ public class DoctorRepositoryImplTest {
     public void e_delete() {
         boolean deleted = repository.delete(doctor.getDocId());
         Assert.assertTrue(deleted);
+
     }
 
     @Test

@@ -52,6 +52,7 @@ public class DoctorRepositoryImpl implements DoctorRepository {
         Doctor doctor = read(docID);
         if(doctor !=null){
             this.doctorDB.remove(doctor);
+            return true;
         }
         return false;
     }

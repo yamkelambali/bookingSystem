@@ -52,6 +52,7 @@ public class PatientRepositoryImpl implements PatientRepository{
         Patient patient = read(patientID);
         if(patient !=null){
             this.patientDB.remove(patient);
+            return true;
         }
         return false;
     }
