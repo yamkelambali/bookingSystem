@@ -2,7 +2,6 @@ package com.startup.Repository.impl;
 /**
  * @author Yamkela Mbali
  */
-import com.startup.Repository.DoctorRepository;
 import com.startup.entity.Doctor;
 import com.startup.factory.DoctorFactory;
 import org.junit.Assert;
@@ -10,6 +9,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import javax.print.Doc;
+
+import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DoctorRepositoryImplTest {
 
