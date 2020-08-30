@@ -2,13 +2,13 @@ package com.startup.Repository.impl;
 /**
  * @author Yamkela Mbali
  */
-import com.startup.Repository.PatientRepository;
+import com.startup.entity.Doctor;
 import com.startup.entity.Patient;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class PatientRepositoryImpl implements PatientRepository {
+public class PatientRepositoryImpl implements PatientRepository{
 
     private static PatientRepository repository = null;
     private Set<Patient> patientDB;
@@ -52,7 +52,6 @@ public class PatientRepositoryImpl implements PatientRepository {
         Patient patient = read(patientID);
         if(patient !=null){
             this.patientDB.remove(patient);
-            return true;
         }
         return false;
     }

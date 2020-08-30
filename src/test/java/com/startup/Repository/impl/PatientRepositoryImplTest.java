@@ -2,14 +2,16 @@ package com.startup.Repository.impl;
 /**
  * @author Yamkela Mbali
  */
-import com.startup.Repository.PatientRepository;
+import com.startup.entity.Doctor;
 import com.startup.entity.Patient;
+import com.startup.factory.DoctorFactory;
 import com.startup.factory.PatientFactory;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PatientRepositoryImplTest {
     private static PatientRepository repository = PatientRepositoryImpl.getRepository();
