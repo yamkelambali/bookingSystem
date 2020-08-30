@@ -1,4 +1,4 @@
-package com.startup.Repository.impl.impl;
+package com.startup.Repository.impl;
 
 import com.startup.entity.Bill;
 

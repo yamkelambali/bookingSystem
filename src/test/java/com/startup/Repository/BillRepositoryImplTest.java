@@ -1,10 +1,10 @@
-package com.startup.Repository.impl;
+package com.startup.Repository;
 /**
  * @author Michael Bezuidenhout
  */
 
-import com.startup.Repository.impl.impl.BillRepository;
-import com.startup.Repository.impl.impl.BillRepositoryImpl;
+import com.startup.Repository.impl.BillRepository;
+import com.startup.Repository.impl.BillRepositoryImpl;
 import com.startup.entity.Bill;
 import com.startup.factory.BillFactory;
 import org.junit.Assert;

@@ -1,9 +1,9 @@
-package com.startup.Repository.impl.impl;
+package com.startup.Repository.impl;
 /**
  * @author Michael Bezuidenhout
  */
 
-import com.startup.Repository.impl.IRepository;
+import com.startup.Repository.IRepository;
 import com.startup.entity.Bill;
 
 import java.util.Set;
