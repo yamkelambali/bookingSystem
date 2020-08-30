@@ -1,8 +1,8 @@
-package com.startup.Repository.impl;
+package com.startup.Repository.impl.impl;
 /**
  * @author Yamkela Mbali
  */
-import com.startup.Repository.IRepository;
+import com.startup.Repository.impl.IRepository;
 import com.startup.entity.Doctor;
 
 import java.util.Set;
