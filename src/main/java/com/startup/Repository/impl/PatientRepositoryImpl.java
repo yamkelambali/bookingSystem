@@ -2,7 +2,6 @@ package com.startup.Repository.impl;
 /**
  * @author Yamkela Mbali
  */
-import com.startup.Repository.PatientRepository;
 import com.startup.entity.Patient;
 
 import java.util.HashSet;

@@ -1,8 +1,9 @@
-package com.startup.Repository.impl;
+package com.startup.Repository;
 /**
  * @author Yamkela Mbali
  */
-import com.startup.Repository.PatientRepository;
+import com.startup.Repository.impl.PatientRepository;
+import com.startup.Repository.impl.PatientRepositoryImpl;
 import com.startup.entity.Patient;
 import com.startup.factory.PatientFactory;
 import org.junit.Assert;
