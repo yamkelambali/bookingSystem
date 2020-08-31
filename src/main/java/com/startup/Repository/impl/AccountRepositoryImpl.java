@@ -1,21 +1,22 @@
 package com.startup.Repository.impl;
+/**
+ * @author Michael Bezuidenhout
+ */
 
+import com.startup.Repository.AccountRepository;
 import com.startup.entity.Account;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class AccountRepositoryImpl  implements AccountRepository {
+public class AccountRepositoryImpl implements AccountRepository {
 
     private static AccountRepository repository = null;
     private Set<Account> accountDB;
-
-    private AccountRepositoryImpl() {
-        this.accountDB = new HashSet<>();
-    }
+    private AccountRepositoryImpl() { this.accountDB = new HashSet<>();}
 
     public static AccountRepository getRepository() {
-        if (repository == null) repository = new AccountRepositoryImpl();
+        if(repository == null) repository = new AccountRepositoryImpl();
         return repository;
     }
 
@@ -28,7 +29,7 @@ public class AccountRepositoryImpl  implements AccountRepository {
     @Override
     public Account read(final String username) {
         for (Account account : this.accountDB) {
-            if (account.getUsername().equalsIgnoreCase(username)) return account;
+            if(account.getUsername().equalsIgnoreCase(username)) return account;
         }
         return null;
     }
@@ -36,7 +37,7 @@ public class AccountRepositoryImpl  implements AccountRepository {
     @Override
     public Account update(Account account) {
         boolean deleteAccount = delete(account.getUsername());
-        if (deleteAccount) {
+        if(deleteAccount) {
             this.accountDB.add(account);
             return account;
         }
@@ -46,7 +47,7 @@ public class AccountRepositoryImpl  implements AccountRepository {
     @Override
     public boolean delete(String username) {
         Account account = read(username);
-        if (account != null) {
+        if(account != null) {
             this.accountDB.remove(account);
             return true;
         }

@@ -49,7 +49,6 @@ public class UserRepositoryImpl implements UserRepository{
         User user = read(userID);
         if(user !=null){
             this.userDB.remove(user);
-            return true;
         }
         return false;
     }

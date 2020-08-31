@@ -1,34 +1,36 @@
 package com.startup.Repository.impl;
 
+import com.startup.Repository.BillRepository;
 import com.startup.entity.Bill;
 
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author Michael Bezuidenhout
+ */
+
 public class BillRepositoryImpl implements BillRepository {
 
     private static BillRepository repository = null;
     private Set<Bill> billDB;
-
-    private BillRepositoryImpl() {
-        this.billDB = new HashSet<>();
-    }
+    private BillRepositoryImpl() {this.billDB = new HashSet<>(); }
 
     public static BillRepository getRepository() {
-        if (repository == null) repository = new BillRepositoryImpl();
-        return repository;
+        if(repository == null) repository = new BillRepositoryImpl();
+            return repository;
     }
 
     @Override
     public Bill create(Bill bill) {
-        this.billDB.add(bill);
-        return bill;
+       this.billDB.add(bill);
+       return bill;
     }
 
     @Override
     public Bill read(String billNo) {
         for (Bill bill : this.billDB) {
-            if (bill.getBillNo().equalsIgnoreCase(billNo)) return bill;
+            if(bill.getBillNo().equalsIgnoreCase(billNo)) return bill;
         }
         return null;
     }
