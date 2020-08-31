@@ -7,12 +7,7 @@ import com.startup.util.GenericHelper;
  */
 
 public class ReceptionistFactory {
-    public static Receptionist createReceptionist(String qualification){
-        String receptionistID = GenericHelper.generateId();
-        Receptionist receptionist = new Receptionist.Builder()
-                .setAdminId(receptionistID)
-                .setQualification(qualification)
-                .build();
+
         return receptionist;
     }
 }
