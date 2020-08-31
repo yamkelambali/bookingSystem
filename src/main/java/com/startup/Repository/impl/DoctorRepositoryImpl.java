@@ -2,6 +2,7 @@ package com.startup.Repository.impl;
 /**
  * @author Yamkela Mbali
  */
+import com.startup.Repository.DoctorRepository;
 import com.startup.entity.Doctor;
 
 import java.util.HashSet;
@@ -50,7 +51,7 @@ public class DoctorRepositoryImpl implements DoctorRepository {
     @Override
     public boolean delete(String docID) {
         Doctor doctor = read(docID);
-        if(doctor !=null){
+        if(doctor != null){
             this.doctorDB.remove(doctor);
             return true;
         }

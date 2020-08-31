@@ -1,4 +1,4 @@
-package com.startup.Repository.impl;
+package com.startup.Repository;
 /**
  * @author Yamkela Mbali
  */
