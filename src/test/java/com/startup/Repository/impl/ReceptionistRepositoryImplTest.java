@@ -46,6 +46,5 @@ public class ReceptionistRepositoryImplTest {
         System.out.println("Get all : " + repository.getAll());
     }
 
-
 }
 

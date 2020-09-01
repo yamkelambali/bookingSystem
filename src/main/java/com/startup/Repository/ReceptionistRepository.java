@@ -1,3 +1,4 @@
+
 package com.startup.Repository;
 
 import com.startup.entity.Receptionist;
