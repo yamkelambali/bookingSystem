@@ -49,5 +49,4 @@ public class AppointmentRepositoryImplTest {
 
         System.out.println("Get all : " + repository.getAll());
     }
-
 }

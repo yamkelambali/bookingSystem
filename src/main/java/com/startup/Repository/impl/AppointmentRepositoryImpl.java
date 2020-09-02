@@ -63,4 +63,3 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         return null;
     }
 }
-
