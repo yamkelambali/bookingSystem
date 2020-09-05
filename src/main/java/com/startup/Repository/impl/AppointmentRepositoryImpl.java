@@ -1,6 +1,6 @@
 package com.startup.Repository.impl;
 
-import com.startup.Repository.AppointmentRepository;
+
 import com.startup.entity.Appointment;
 
 import java.util.HashSet;
