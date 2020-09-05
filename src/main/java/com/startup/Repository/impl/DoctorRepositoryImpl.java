@@ -60,6 +60,6 @@ public class DoctorRepositoryImpl implements DoctorRepository {
 
     @Override
     public Set<Doctor> getAll() {
-        return null;
+        return this.doctorDB;
     }
 }
