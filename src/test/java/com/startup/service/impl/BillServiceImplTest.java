@@ -47,7 +47,7 @@ public class BillServiceImplTest {
     public void c_update() {
         Bill updated = new Bill.Builder().copy(bill).setAppointId("125485").setPatientId("542136582").setAmount("R399.00").build();
         updated = service.update(updated);
-        System.out.println("Update Bill:  " + updated);
+        System.out.println("Update:  " + updated);
     }
 
     @Test
