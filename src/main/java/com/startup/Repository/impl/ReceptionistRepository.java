@@ -1,5 +1,7 @@
-package com.startup.Repository;
 
+package com.startup.Repository.impl;
+
+import com.startup.Repository.IRepository;
 import com.startup.entity.Receptionist;
 
 import java.util.Set;

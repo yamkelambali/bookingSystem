@@ -16,4 +16,3 @@ public class ReceptionistFactoryTest {
         Assert.assertNotNull(receptionist);
     }
 }
-

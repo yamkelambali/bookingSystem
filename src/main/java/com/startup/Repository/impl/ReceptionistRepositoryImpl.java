@@ -1,6 +1,6 @@
 package com.startup.Repository.impl;
 
-import com.startup.Repository.ReceptionistRepository;
+
 import com.startup.entity.Receptionist;
 
 import java.util.HashSet;
@@ -13,7 +13,6 @@ public class ReceptionistRepositoryImpl implements ReceptionistRepository {
 
     private static ReceptionistRepository repository = null;
     private Set<Receptionist> receptionistDB;
-
     private ReceptionistRepositoryImpl() { this.receptionistDB = new HashSet<>();
 
     }
@@ -51,15 +50,16 @@ public class ReceptionistRepositoryImpl implements ReceptionistRepository {
     @Override
     public boolean delete(String adminId) {
         Receptionist receptionist= read(adminId);
-        if(adminId !=null){
+        if(adminId != null){
             this.receptionistDB.remove(receptionist);
+            return true;
         }
         return false;
     }
 
     @Override
     public Set<Receptionist> getAll() {
-        return null;
+        return this.receptionistDB;
     }
 
 }

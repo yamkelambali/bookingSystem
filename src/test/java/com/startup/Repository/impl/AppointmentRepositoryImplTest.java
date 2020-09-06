@@ -1,7 +1,6 @@
 package com.startup.Repository.impl;
 
 
-import com.startup.Repository.AppointmentRepository;
 import com.startup.entity.Appointment;
 import com.startup.factory.AppointmentFactory;
 import org.junit.Assert;
@@ -49,5 +48,4 @@ public class AppointmentRepositoryImplTest {
 
         System.out.println("Get all : " + repository.getAll());
     }
-
 }

@@ -45,4 +45,5 @@ public class UserRepositoryImplTest {
     public void d_getAll() {
         System.out.println("Get all : " + repository.getAll());
     }
+
 }

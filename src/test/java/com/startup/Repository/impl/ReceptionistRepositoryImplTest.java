@@ -1,6 +1,5 @@
 package com.startup.Repository.impl;
 
-import com.startup.Repository.ReceptionistRepository;
 import com.startup.entity.Receptionist;
 import com.startup.factory.ReceptionistFactory;
 import org.junit.Assert;
@@ -45,7 +44,6 @@ public class ReceptionistRepositoryImplTest {
 
         System.out.println("Get all : " + repository.getAll());
     }
-
 
 }
 

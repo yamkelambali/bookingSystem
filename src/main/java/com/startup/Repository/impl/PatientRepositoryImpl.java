@@ -2,7 +2,7 @@ package com.startup.Repository.impl;
 /**
  * @author Yamkela Mbali
  */
-import com.startup.Repository.PatientRepository;
+
 import com.startup.entity.Patient;
 
 import java.util.HashSet;
@@ -59,6 +59,6 @@ public class PatientRepositoryImpl implements PatientRepository {
 
     @Override
     public Set<Patient> getAll() {
-        return null;
+        return this.patientDB;
     }
 }
