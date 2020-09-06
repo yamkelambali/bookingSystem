@@ -2,7 +2,6 @@ package com.startup.Repository.impl;
 /**
  * @author Yamkela Mbali
  */
-import com.startup.Repository.DoctorRepository;
 import com.startup.entity.Doctor;
 import com.startup.factory.DoctorFactory;
 import org.junit.Assert;
