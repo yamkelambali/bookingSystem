@@ -59,6 +59,6 @@ public class PatientRepositoryImpl implements PatientRepository {
 
     @Override
     public Set<Patient> getAll() {
-        return null;
+        return this.patientDB;
     }
 }

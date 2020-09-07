@@ -15,8 +15,8 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     private static AppointmentRepository repository = null;
     private Set<Appointment> appointmentDB;
 
-    private AppointmentRepositoryImpl() { this.appointmentDB = new HashSet<>();
-
+    private AppointmentRepositoryImpl() {
+        this.appointmentDB = new HashSet<>();
     }
 
     public static AppointmentRepository getRepository(){
@@ -31,9 +31,9 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     }
 
     @Override
-    public Appointment read(String docId) {
+    public Appointment read(String appointID) {
         for (Appointment appointment : this.appointmentDB){
-            if (appointment.getAppointID().equalsIgnoreCase(docId))
+            if (appointment.getAppointID().equalsIgnoreCase(appointID))
                 return appointment;
         }
         return null;
@@ -54,12 +54,13 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         Appointment appointment = read(appointID);
         if(appointment !=null){
             this.appointmentDB.remove(appointment);
+            return true;
         }
         return false;
     }
 
     @Override
     public Set<Appointment> getAll() {
-        return null;
+        return this.appointmentDB;
     }
 }

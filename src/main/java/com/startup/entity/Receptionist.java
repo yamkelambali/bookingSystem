@@ -29,19 +29,19 @@ public class Receptionist {
     public static class Builder{
         private  String adminId, qualification;
 
-        public Receptionist.Builder setAdminId(String adminId){
+        public Builder setAdminId(String adminId){
             this.adminId = adminId;
             return this;
         }
 
-        public Receptionist.Builder setQualification(String qualification){
+        public Builder setQualification(String qualification){
             this.qualification = qualification;
             return this;
         }
 
-        public Receptionist.Builder copy(Receptionist receptionist){
+        public Builder copy(Receptionist receptionist){
             this.adminId = receptionist.adminId;
-            this.qualification = qualification;
+            this.qualification = receptionist.qualification;
             return this;
         }
 
