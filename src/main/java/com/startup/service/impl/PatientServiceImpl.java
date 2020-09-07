@@ -7,7 +7,7 @@ import com.startup.entity.Patient;
 import java.util.Set;
 
 /**
- * @author Lene Prinsloo
+ * @author Lene Prinsloo.
  * desc : ServiceImpl for PatientService
  */
 

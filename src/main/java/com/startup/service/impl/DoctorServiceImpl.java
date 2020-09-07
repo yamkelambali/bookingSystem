@@ -8,7 +8,7 @@ import com.startup.entity.Doctor;
 import java.util.Set;
 
 /**
- * @author Lene Prinsloo
+ * @author Lene Prinsloo.
  * desc : ServiceImpl for DoctorService
  */
 

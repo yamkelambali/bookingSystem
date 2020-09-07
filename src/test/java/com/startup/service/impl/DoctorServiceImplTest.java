@@ -1,7 +1,7 @@
 package com.startup.service.impl;
 
 /**
- * @author Lene Prinsloo
+ * @author Lene Prinsloo.
  * desc : DoctorServiceImplTest for DoctorServiceImpl
  */
 
