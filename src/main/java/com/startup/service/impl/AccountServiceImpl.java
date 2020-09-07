@@ -1,5 +1,7 @@
 package com.startup.service.impl;
-
+/**
+ * @author Yamkela Mbali
+ */
 import com.startup.Repository.impl.AccountRepository;
 import com.startup.Repository.impl.AccountRepositoryImpl;
 import com.startup.Repository.impl.UserRepositoryImpl;
@@ -39,7 +41,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account update(Account account) {
-        return this.update(account);
+
+        return this.repository.update(account);
     }
 
     @Override

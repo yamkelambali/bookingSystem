@@ -1,5 +1,7 @@
 package com.startup.service.impl;
-
+/**
+ * @author Yamkela Mbali
+ */
 import com.startup.Repository.impl.AccountRepository;
 import com.startup.Repository.impl.AccountRepositoryImpl;
 import com.startup.entity.Account;
@@ -40,7 +42,7 @@ public class AccountServiceImplTest {
     }
 
     @Test
-    public void C_update() {
+    public void c_update() {
         Account updated = new Account.Builder().copy(account).setName("Tony").setSurname("Stark").setPassword("Avenger").setCellNo("321").build();
         updated = service.update(updated);
         System.out.println("Update:  " + updated);
