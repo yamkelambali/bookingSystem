@@ -8,6 +8,13 @@
   <artifactId>bookingSystem</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <version>2.3.3.RELEASE</version>
+
+  </parent>
+
   <name>bookingSystem</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
@@ -19,11 +26,16 @@
   </properties>
 
   <dependencies>
+
+
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
   </dependencies>
 
