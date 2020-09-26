@@ -1,11 +1,16 @@
 package com.startup.entity;
+
+import java.io.Serializable;
+
 /**
  * @author Yamkela Mbali
  * desc : Entity for User
  */
-public class Bill {
+public class Bill implements Serializable {
 
     private String billNo, appointId, patientId, amount;
+
+    private Bill(){}
 
     private Bill(Builder builder){
         this.billNo = builder.billNo;
