@@ -12,7 +12,6 @@
     <artifactId>spring-boot-starter-parent</artifactId>
     <groupId>org.springframework.boot</groupId>
     <version>2.3.3.RELEASE</version>
-
   </parent>
 
   <name>bookingSystem</name>

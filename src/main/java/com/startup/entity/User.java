@@ -1,12 +1,16 @@
 package com.startup.entity;
 
+import java.io.Serializable;
+
 /**
  * @author Yamkela Mbali
  * desc : Entity for User
  */
-public class User {
+public class User{
 
     private String username, password, userId, name, surname, cellNo, emailAddress;
+
+    private User(){}
 
     private User(Builder builder){
         this.username = builder.username;
