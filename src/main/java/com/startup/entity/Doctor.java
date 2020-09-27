@@ -1,13 +1,17 @@
 package com.startup.entity;
 
+import java.io.Serializable;
+
 /**
  * @author Lene Prinsloo
  * desc : Entity for Doctor
  */
 
-public class Doctor {
+public class Doctor implements Serializable {
 
     private String docId, dept, specialisation;
+
+    private Doctor(){}
 
     private Doctor(Builder builder){
         this.docId = builder.docId;
