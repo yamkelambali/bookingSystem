@@ -1,9 +1,12 @@
 package com.startup.entity;
 
+import java.io.Serializable;
+
 public class Account {
 
     private String name, surname, username, password, cellNo;
 
+    private Account(){};
 
     private Account(Builder builder){
         this.name = builder.name;
