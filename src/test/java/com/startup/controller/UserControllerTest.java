@@ -1,8 +1,7 @@
 package com.startup.controller;
 
-import com.startup.entity.Account;
-import com.startup.entity.Bill;
-import com.startup.factory.BillFactory;
+import com.startup.entity.User;
+import com.startup.factory.UserFactory;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,59 +15,56 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.swing.text.html.parser.Entity;
+import java.util.Random;
 
 import static org.junit.Assert.*;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class BillControllerTest {
+public class UserControllerTest {
 
-    public static Bill bill = BillFactory.generateBill("120456", "54778888", "1500");
+    private static User user = UserFactory.createUser("BoogyMan", "JW1243", "John", "Wick", "087123457", "test@gmail.com");
+
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/bill/";
+    private String baseURL = "http://localhost:8080/user/";
 
     @Test
     public void a_create() {
         String url = baseURL + "create";
         System.out.println("URL" + url);
-        System.out.println("POST data: " + bill);
-        ResponseEntity<Bill> postResponse = restTemplate.postForEntity(url, bill, Bill.class);
+        System.out.println("POST data: " + user);
+        ResponseEntity<User> postResponse = restTemplate.postForEntity(url, user, User.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        bill = postResponse.getBody();
-        System.out.println("Saved data: " + bill);
-        assertEquals(bill.getAppointId(), postResponse.getBody().getBillNo());
+        user = postResponse.getBody();
+        System.out.println("Saved data: " + user);
+        assertEquals(user.getUserId(), postResponse.getBody().getUserId());
     }
 
     @Test
     public void b_read() {
-        String url = baseURL + "read/" + bill.getBillNo();
+        String url = baseURL + "read/" + user.getUserId();
         System.out.println("URL: " + url);
-        ResponseEntity<Bill> response = restTemplate.getForEntity(url, Bill.class);
-        assertEquals(bill.getBillNo(), response.getBody().getBillNo());
+        ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
+        assertEquals(user.getUserId(), response.getBody().getUserId());
     }
 
     @Test
     public void c_update() {
-
-        Bill updatedBill = new Bill.Builder().copy(bill)
-                .setAppointId("336622")
-                .setPatientId("54778865")
-                .setAmount("R2500")
-                .build();
+        User updatedUser = new User.Builder().copy(user).setName("Neo").build();
         String url = baseURL + "update";
         System.out.println("URL: " + url);
-        System.out.println("Updated bill: " + updatedBill);
-        ResponseEntity<Bill> response = restTemplate.postForEntity(url, updatedBill, Bill.class);
-        assertEquals(bill.getBillNo(), response.getBody().getBillNo());
+        System.out.println("Updated details: " + updatedUser);
+        ResponseEntity<User> response = restTemplate.postForEntity(url, updatedUser, User.class);
+        assertEquals(user.getUserId(), response.getBody().getUserId());
     }
-
 
     @Test
     public void d_getAll() {
         String url = baseURL + "all";
+        System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
@@ -78,7 +74,7 @@ public class BillControllerTest {
 
     @Test
     public void e_delete() {
-        String url = baseURL + "delete/" + bill.getBillNo();
+        String url = baseURL + "delete/" + user.getUserId();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }

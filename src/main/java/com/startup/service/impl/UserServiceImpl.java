@@ -5,10 +5,12 @@ package com.startup.service.impl;
 import com.startup.Repository.impl.UserRepository;
 import com.startup.Repository.impl.UserRepositoryImpl;
 import com.startup.entity.User;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class UserServiceImpl implements UserService {
     private static UserService service = null;
     private UserRepository repository;
