@@ -43,7 +43,7 @@ public class AppointmentControllerTest {
 
         appointment = postResponse.getBody();
         System.out.println("save: " + appointment);
-        assertEquals(appointment.getPatientNo(), postResponse.getBody().getPatientNo());
+        assertEquals(appointment.getAppointID(), postResponse.getBody().getAppointID());
 
     }
 
@@ -59,25 +59,25 @@ public class AppointmentControllerTest {
 
     @Test
     public void b_read() {
-        String url = baseURL + "read/" + appointment.getPatientNo();
+        String url = baseURL + "read/" + appointment.getAppointID();
         System.out.println("URL: " + url);
         ResponseEntity<Appointment> response = restTemplate.getForEntity(url, Appointment.class);
-        assertEquals(appointment.getPatientNo(),response.getBody().getPatientNo());
+        assertEquals(appointment.getAppointID(),response.getBody().getAppointID());
     }
 
     @Test
     public void c_update() {
-        Appointment updated = new Appointment.Builder().copy(appointment).setPatientNo("12456665").build();
+        Appointment updated = new Appointment.Builder().copy(appointment).setAppointID("07263015222").build();
         String url = baseURL + "update";
         System.out.println("URL: " + url);
         System.out.println("Post date: " + updated);
         ResponseEntity<Appointment> response = restTemplate.postForEntity(url, updated, Appointment.class);
-        assertEquals(appointment.getPatientNo(), response.getBody().getPatientNo());
+        assertEquals(appointment.getAppointID(), response.getBody().getAppointID());
     }
 
     @Test
     public void e_delete() {
-        String url = baseURL + "delete/" + appointment.getPatientNo();
+        String url = baseURL + "delete/" + appointment.getAppointID();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }
