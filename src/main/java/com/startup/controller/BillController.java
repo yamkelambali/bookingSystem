@@ -1,14 +1,10 @@
 package com.startup.controller;
 
-
 import com.startup.entity.Bill;
 import com.startup.factory.BillFactory;
 import com.startup.service.impl.BillServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -21,14 +17,32 @@ public class BillController {
 
     @RequestMapping(value = "/generate")
     public Bill create(Bill bill){
-        Bill newBill = BillFactory.generateBill(bill.getAmount(),bill.getPatientId(),bill.getAppointId());
+        Bill newBill = BillFactory.generateBill(bill.getAmount(),
+                bill.getPatientId(),
+                bill.getAppointId());
         return billService.create(newBill);
 
         }
 
-        public Set<Bill> getall(){
-            return billService.getAll();
-        }
-
+    @GetMapping("/read")
+    public Bill read(@PathVariable String bill){
+        return  billService.read(bill);
     }
+
+    @PostMapping("/update")
+    public Bill update(@RequestBody Bill bill) {
+        return billService.update(bill);
+    }
+
+    @GetMapping("/all")
+    public Set<Bill> getall(){
+        return billService.getAll();
+    }
+
+    @DeleteMapping("/delete/{bill}")
+    public boolean delete(@PathVariable String bill) {
+        return billService.delete(bill);
+    }
+
+}
 

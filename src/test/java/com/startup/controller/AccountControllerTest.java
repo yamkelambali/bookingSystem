@@ -1,8 +1,8 @@
 package com.startup.controller;
 
 import com.startup.entity.Account;
-import com.startup.entity.Bill;
-import com.startup.factory.BillFactory;
+import com.startup.entity.User;
+import com.startup.factory.AccountFactory;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,55 +16,50 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.swing.text.html.parser.Entity;
-
 import static org.junit.Assert.*;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class BillControllerTest {
+public class AccountControllerTest {
 
-    public static Bill bill = BillFactory.generateBill("120456", "54778888", "1500");
+    private static Account account = AccountFactory.createAccount("Tony", "Stark", "BoogieMan", "123","123");
+
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/bill/";
+    private String baseURL = "http://localhost:8080/account/";
 
     @Test
     public void a_create() {
         String url = baseURL + "create";
         System.out.println("URL" + url);
-        System.out.println("POST data: " + bill);
-        ResponseEntity<Bill> postResponse = restTemplate.postForEntity(url, bill, Bill.class);
+        System.out.println("POST data: " + account);
+        ResponseEntity<Account> postResponse = restTemplate.postForEntity(url, account, Account.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        bill = postResponse.getBody();
-        System.out.println("Saved data: " + bill);
-        assertEquals(bill.getAppointId(), postResponse.getBody().getBillNo());
+
+        account = postResponse.getBody();
+        System.out.println("Saved data: " + account);
+        assertEquals(account.getUsername(), postResponse.getBody().getUsername());
     }
 
     @Test
     public void b_read() {
-        String url = baseURL + "read/" + bill.getBillNo();
+        String url = baseURL + "read/" + account.getUsername();
         System.out.println("URL: " + url);
-        ResponseEntity<Bill> response = restTemplate.getForEntity(url, Bill.class);
-        assertEquals(bill.getBillNo(), response.getBody().getBillNo());
+        ResponseEntity<Account> response = restTemplate.getForEntity(url, Account.class);
+        assertEquals(account.getUsername(), response.getBody().getUsername());
     }
 
     @Test
     public void c_update() {
-
-        Bill updatedBill = new Bill.Builder().copy(bill)
-                .setAppointId("336622")
-                .setPatientId("54778865")
-                .setAmount("R2500")
-                .build();
+        Account updatedAccount = new Account.Builder().copy(account).setName("John").setSurname("Wick").build();
         String url = baseURL + "update";
         System.out.println("URL: " + url);
-        System.out.println("Updated bill: " + updatedBill);
-        ResponseEntity<Bill> response = restTemplate.postForEntity(url, updatedBill, Bill.class);
-        assertEquals(bill.getBillNo(), response.getBody().getBillNo());
+        System.out.println("Updated details: " + updatedAccount);
+        ResponseEntity<Account> response = restTemplate.postForEntity(url, updatedAccount, Account.class);
+        assertEquals(account.getUsername(), response.getBody().getUsername());
     }
-
 
     @Test
     public void d_getAll() {
@@ -78,7 +73,7 @@ public class BillControllerTest {
 
     @Test
     public void e_delete() {
-        String url = baseURL + "delete/" + bill.getBillNo();
+        String url = baseURL + "delete/" + account.getUsername();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }

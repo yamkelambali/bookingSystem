@@ -6,10 +6,12 @@ import com.startup.Repository.impl.AccountRepository;
 import com.startup.Repository.impl.AccountRepositoryImpl;
 import com.startup.Repository.impl.UserRepositoryImpl;
 import com.startup.entity.Account;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class AccountServiceImpl implements AccountService {
     private static AccountService service = null;
     private AccountRepository repository;
@@ -41,7 +43,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account update(Account account) {
-
         return this.repository.update(account);
     }
 
