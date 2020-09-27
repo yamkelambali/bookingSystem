@@ -3,13 +3,14 @@ package com.startup.service.impl;
 import com.startup.Repository.impl.AppointmentRepository;
 import com.startup.Repository.impl.AppointmentRepositoryImpl;
 import com.startup.entity.Appointment;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 /**
  * @author Michael Bezuidenhout
  */
-
+@Service
 public class AppointmentServiceImpl implements AppointmentService {
 
     private static AppointmentService service = null;

@@ -20,10 +20,7 @@ import java.time.LocalTime;
 
 import static org.junit.Assert.*;
 
-/**
-*@author anati Jack
- */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppointmentControllerTest {
@@ -36,8 +33,8 @@ public class AppointmentControllerTest {
 
 
     @Test
-    public void create() {
-       String url = baseURL + "create";
+    public void a_create() {
+        String url = baseURL + "create";
         System.out.println("URL:" + url);
         System.out.println("Post data: " + appointment);
         ResponseEntity<Appointment> postResponse = restTemplate.postForEntity(url, appointment, Appointment.class);
@@ -47,10 +44,11 @@ public class AppointmentControllerTest {
         appointment = postResponse.getBody();
         System.out.println("save: " + appointment);
         assertEquals(appointment.getPatientNo(), postResponse.getBody().getPatientNo());
+
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null,headers);
@@ -60,7 +58,7 @@ public class AppointmentControllerTest {
     }
 
     @Test
-    public void read() {
+    public void b_read() {
         String url = baseURL + "read/" + appointment.getPatientNo();
         System.out.println("URL: " + url);
         ResponseEntity<Appointment> response = restTemplate.getForEntity(url, Appointment.class);
@@ -68,7 +66,7 @@ public class AppointmentControllerTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
         Appointment updated = new Appointment.Builder().copy(appointment).setPatientNo("12456665").build();
         String url = baseURL + "update";
         System.out.println("URL: " + url);
@@ -78,7 +76,7 @@ public class AppointmentControllerTest {
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
         String url = baseURL + "delete/" + appointment.getPatientNo();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
