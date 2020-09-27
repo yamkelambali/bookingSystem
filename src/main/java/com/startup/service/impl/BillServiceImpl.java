@@ -3,8 +3,10 @@ package com.startup.service.impl;
 import com.startup.Repository.impl.BillRepository;
 import com.startup.Repository.impl.BillRepositoryImpl;
 import com.startup.entity.Bill;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
+@Service
 
 public class BillServiceImpl implements BillService {
 
