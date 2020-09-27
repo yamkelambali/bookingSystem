@@ -19,67 +19,62 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
-
 import static org.junit.Assert.*;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DoctorControllerTest {
+
+    private static Doctor doctor = DoctorFactory.createDoctor("Harding0411", "Dermatology", "Dermatologists");
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private static Doctor doctor;
-    private String baseURL = "http://localhost:8080/doctor";
+    private String baseURL = "http://localhost:8080/doctor/";
 
     @Test
     public void a_create() {
-        Doctor newDoctor = DoctorFactory.createDoctor("Harding0411", "Dermatology", "Dermatologists");
-        String url = baseURL + "/create";
+        String url = baseURL + "create";
+        System.out.println("URL: " + url);
+        System.out.println("Post Data: " + doctor);
 
-        ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(url, newDoctor, Doctor.class);
-
+        ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(url, doctor, Doctor.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
-        System.out.println(postResponse);
-        System.out.println(postResponse.getBody());
+        doctor = postResponse.getBody();
+        System.out.println("Saved Data: " + doctor);
+        assertEquals(doctor.getDocId(), postResponse.getBody().getDocId());
     }
 
     @Test
-    public void b_read(){
-        String id = doctor.getDocId();
-        String url = baseURL + "/read" + id;
+    public void b_read() {
+        String url = baseURL + "read/" + doctor.getDocId();
+        System.out.println("URL: " + url);
 
-        ResponseEntity <Doctor> getResponse = restTemplate.getForEntity(url, Doctor.class);
+        ResponseEntity<Doctor> getResponse = restTemplate.getForEntity(url, Doctor.class);
 
-        assertNotNull(getResponse.getBody());
-
-        System.out.println(getResponse);
+        assertEquals(doctor.getDocId(), getResponse.getBody().getDocId());
         System.out.println(getResponse.getBody());
     }
 
     @Test
-    public void c_update(){
-        String url = baseURL + "/update";
-        String oldDept = doctor.getDept();
-        doctor = new Doctor.Builder().copy(doctor).setDept("Radiology").build();
-        restTemplate.put(url, doctor );
+    public void c_update() {
+        Doctor updateDoctor = new Doctor.Builder().copy(doctor).setDept("Radiology").build();
+        String url = baseURL + "update";
+        System.out.println("URL: " + url);
 
-        assertNotEquals(doctor.getDept(), oldDept);
+        System.out.println("Post Data: " + updateDoctor);
+        ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(url, updateDoctor, Doctor.class);
+        assertEquals(doctor.getDocId(), postResponse.getBody().getDocId());
     }
 
     @Test
-    public void e_delete(){
-        String url = baseURL + "/delete/" + doctor.getDocId();
+    public void e_delete() {
+        String url = baseURL + "delete/" + doctor.getDocId();
+        System.out.println("URL: " + url);
         restTemplate.delete(url);
 
-        ResponseEntity <List> response = restTemplate.getForEntity(baseURL + "/all", List.class);
-
-        System.out.println(response.getBody());
-        System.out.println(response.getStatusCode());
     }
 
     @Test
