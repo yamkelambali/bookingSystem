@@ -41,8 +41,9 @@ public class PatientController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable String id){
-        patientService.delete(id);
+    public boolean delete(@PathVariable String id) {
+
+        return patientService.delete(id);
     }
 
     @GetMapping("/all")
