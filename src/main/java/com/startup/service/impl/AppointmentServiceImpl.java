@@ -22,8 +22,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     public static AppointmentService getService() {
         if (service == null) service = new AppointmentServiceImpl();
-        return service;
-    }
+        return service; }
 
     @Override
     public Set<Appointment> getAll() {
