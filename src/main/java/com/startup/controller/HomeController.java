@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-    @RequestMapping({"/", "/index.xyz"})
+    @RequestMapping("/home")
     String home(){
-        return "Booking Management System for Hospitals";
-
+        return "Booking System Demo";
     }
-
 }
