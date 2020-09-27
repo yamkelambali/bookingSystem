@@ -20,10 +20,7 @@ import java.time.LocalTime;
 
 import static org.junit.Assert.*;
 
-/**
-*@author anati Jack
- */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppointmentControllerTest {
@@ -36,8 +33,8 @@ public class AppointmentControllerTest {
 
 
     @Test
-    public void create() {
-       String url = baseURL + "create";
+    public void a_create() {
+        String url = baseURL + "create";
         System.out.println("URL:" + url);
         System.out.println("Post data: " + appointment);
         ResponseEntity<Appointment> postResponse = restTemplate.postForEntity(url, appointment, Appointment.class);
@@ -46,11 +43,12 @@ public class AppointmentControllerTest {
 
         appointment = postResponse.getBody();
         System.out.println("save: " + appointment);
-        assertEquals(appointment.getPatientNo(), postResponse.getBody().getPatientNo());
+        assertEquals(appointment.getAppointID(), postResponse.getBody().getAppointID());
+
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null,headers);
@@ -60,26 +58,26 @@ public class AppointmentControllerTest {
     }
 
     @Test
-    public void read() {
-        String url = baseURL + "read/" + appointment.getPatientNo();
+    public void b_read() {
+        String url = baseURL + "read/" + appointment.getAppointID();
         System.out.println("URL: " + url);
         ResponseEntity<Appointment> response = restTemplate.getForEntity(url, Appointment.class);
-        assertEquals(appointment.getPatientNo(),response.getBody().getPatientNo());
+        assertEquals(appointment.getAppointID(),response.getBody().getAppointID());
     }
 
     @Test
-    public void update() {
-        Appointment updated = new Appointment.Builder().copy(appointment).setPatientNo("12456665").build();
+    public void c_update() {
+        Appointment updated = new Appointment.Builder().copy(appointment).setAppointID("07263015222").build();
         String url = baseURL + "update";
         System.out.println("URL: " + url);
         System.out.println("Post date: " + updated);
         ResponseEntity<Appointment> response = restTemplate.postForEntity(url, updated, Appointment.class);
-        assertEquals(appointment.getPatientNo(), response.getBody().getPatientNo());
+        assertEquals(appointment.getAppointID(), response.getBody().getAppointID());
     }
 
     @Test
-    public void delete() {
-        String url = baseURL + "delete/" + appointment.getPatientNo();
+    public void e_delete() {
+        String url = baseURL + "delete/" + appointment.getAppointID();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }
