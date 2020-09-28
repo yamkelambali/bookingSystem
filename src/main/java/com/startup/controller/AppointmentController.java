@@ -20,28 +20,28 @@ public class AppointmentController {
     private AppointmentServiceImpl appointmentService;
 
     @PostMapping("/create")
-    public Appointment create (@RequestBody Appointment appointment){
+    public Appointment a_create (@RequestBody Appointment appointment){
         Appointment newAppointment = AppointmentFactory.createAppointment(appointment.getAppointID(), appointment.getPatientNo(), appointment.getDocID(), appointment.getLocalDate(), appointment.getLocalTime());
         return appointmentService.create(newAppointment);
     }
 
     @GetMapping("/all")
-    public Set<Appointment> getAll(){
+    public Set<Appointment> d_getAll(){
         return  appointmentService.getAll();
     }
 
     @GetMapping("/read/{id}")
-    public Appointment read(@PathVariable String id){
+    public Appointment b_read(@PathVariable String id){
         return appointmentService.read(id);
     }
 
     @PostMapping ("/update")
-    public Appointment update(@RequestBody Appointment address){
+    public Appointment c_update(@RequestBody Appointment address){
         return appointmentService.update(address);
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id){
+    public boolean e_delete(@PathVariable String id){
         return appointmentService.delete(id);
     }
 }
