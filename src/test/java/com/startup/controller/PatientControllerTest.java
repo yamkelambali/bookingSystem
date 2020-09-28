@@ -27,11 +27,11 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PatientControllerTest {
 
-    private static Patient patient = PatientFactory.createPatient("0706CP071401", "Upcoming Appointment: CP071401, Harding0411, Dermatologist, 07/06/2020, 15:30:00", "2001200220032004");
-
     @Autowired
     private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/patient/";
+
+    private static Patient patient = PatientFactory.createPatient("0706CP071401", "Upcoming Appointment: CP071401, Harding0411, Dermatologist, 07/06/2020, 15:30:00", "2001200220032004");
 
     @Test
     public void a_create() {
