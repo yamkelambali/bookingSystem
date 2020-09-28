@@ -16,29 +16,29 @@ public class ReceptionistController {
     private ReceptionistService receptionistService;
 
     @PostMapping("/create")
-    public Receptionist create (@RequestBody Receptionist receptionist){
-        Receptionist newReceptionist = ReceptionistFactory.createReceptionist(receptionist.getQualification());
+    public Receptionist a_create (@RequestBody Receptionist receptionist){
+        Receptionist newReceptionist = ReceptionistFactory.createReceptionist(receptionist.getAdminId());
         return receptionistService.create(newReceptionist);
 
     }
     @GetMapping("/all")
-    public Set<Receptionist> getAll()
+    public Set<Receptionist> d_getAll()
     {
         return receptionistService.getAll();
     }
 
     @GetMapping("/read/{id}")
-    public Receptionist read(@PathVariable String id){
+    public Receptionist b_read(@PathVariable String id){
         return receptionistService.read(id);
     }
 
     @PostMapping ("/update")
-    public Receptionist update(@RequestBody Receptionist receptionist){
+    public Receptionist c_update(@RequestBody Receptionist receptionist){
         return receptionistService.update(receptionist);
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id){
+    public boolean e_delete(@PathVariable String id){
         return receptionistService.delete(id);
     }
 }

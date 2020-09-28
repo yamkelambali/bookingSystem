@@ -9,19 +9,13 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
 import static org.junit.Assert.*;
-/**
-*@author Anati Jack
- */
-
 @SpringBootTest(webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -33,9 +27,9 @@ public class ReceptionistControllerTest {
     private TestRestTemplate restTemplate = new TestRestTemplate();
     private String baseURL = "https://localhost:8080/receptionist";
 
-    @Test
-    public void create() {
 
+    @Test
+    public void a_create() {
         String url = baseURL + "create";
         System.out.println("URL: " + url + "\n" + "receptionist" + receptionist);
         System.out.println("recep" + receptionist);
@@ -44,11 +38,11 @@ public class ReceptionistControllerTest {
         assertNotNull(postResponse.getBody());
         receptionist = postResponse.getBody();
         System.out.println("recep saved" + receptionist);
-        assertEquals(receptionist.getQualification(),postResponse.getBody().getQualification());
+        assertEquals(receptionist.getAdminId(),postResponse.getBody().getAdminId());
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
         String url = baseURL + "all";
         System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
@@ -59,29 +53,27 @@ public class ReceptionistControllerTest {
     }
 
     @Test
-    public void read() {
+    public void b_read() {
         String url = baseURL + "read/" + receptionist.getQualification();
         System.out.println("URL: " + url);
         ResponseEntity<Receptionist> response = restTemplate.getForEntity(url, Receptionist.class);
-        assertEquals(receptionist.getQualification(), response.getBody().getQualification());
+        assertEquals(receptionist.getAdminId(), response.getBody().getAdminId());
     }
 
     @Test
-    public void update() {
-
+    public void c_update() {
         Receptionist updated = new Receptionist.Builder().copy(receptionist).setQualification("Computer").build();
         String url = baseURL + "update";
         System.out.println("URL: " + url);
         System.out.println("Post date: " + updated);
         ResponseEntity<Receptionist> response = restTemplate.postForEntity(url, updated, Receptionist.class);
-        assertEquals(receptionist.getQualification(), response.getBody().getQualification());
+        assertEquals(receptionist.getAdminId(), response.getBody().getAdminId());
     }
-
     @Test
-    public void delete() {
-        String url = baseURL + "delete/" + receptionist.getQualification();
+    public void e_delete() {
+        String url = baseURL + "delete/" + receptionist.getAdminId();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }
 
-}
+    }
