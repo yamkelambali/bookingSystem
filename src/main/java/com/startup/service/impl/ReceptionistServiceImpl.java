@@ -5,13 +5,14 @@ import com.startup.Repository.impl.AppointmentRepositoryImpl;
 import com.startup.Repository.impl.ReceptionistRepository;
 import com.startup.Repository.impl.ReceptionistRepositoryImpl;
 import com.startup.entity.Receptionist;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 /**
  * @author Michael Bezuidenhout
  */
-
+@Service
 public class ReceptionistServiceImpl implements  ReceptionistService{
 
     private static  ReceptionistService service = null;

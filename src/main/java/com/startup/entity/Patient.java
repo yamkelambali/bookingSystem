@@ -1,8 +1,17 @@
 package com.startup.entity;
 
-public class Patient {
+import java.io.Serializable;
+
+/**
+ * @author Lene Prinsloo
+ * desc : Entity for Patient
+ */
+
+public class Patient implements Serializable {
 
     private String patientId, historyReport, medicalAidId;
+
+    private Patient(){}
 
     private Patient(Builder builder){
         this.patientId = builder.patientId;

@@ -3,6 +3,7 @@ package com.startup.service.impl;
 import com.startup.Repository.impl.PatientRepository;
 import com.startup.Repository.impl.PatientRepositoryImpl;
 import com.startup.entity.Patient;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
@@ -11,6 +12,7 @@ import java.util.Set;
  * desc : ServiceImpl for PatientService
  */
 
+@Service
 public class PatientServiceImpl implements PatientService{
 
     private static PatientService service = null;

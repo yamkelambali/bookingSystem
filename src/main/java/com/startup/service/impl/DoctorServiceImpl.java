@@ -1,9 +1,9 @@
 package com.startup.service.impl;
 
-import com.startup.Repository.impl.AccountRepositoryImpl;
 import com.startup.Repository.impl.DoctorRepository;
 import com.startup.Repository.impl.DoctorRepositoryImpl;
 import com.startup.entity.Doctor;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
@@ -12,6 +12,7 @@ import java.util.Set;
  * desc : ServiceImpl for DoctorService
  */
 
+@Service
 public class DoctorServiceImpl implements DoctorService{
 
     private static DoctorService service = null;
