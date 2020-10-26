@@ -26,11 +26,11 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DoctorControllerTest {
 
-    private static Doctor doctor = DoctorFactory.createDoctor("Harding0411", "Dermatology", "Dermatologists");
-
     @Autowired
     private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/doctor/";
+
+    private static Doctor doctor = DoctorFactory.createDoctor("Harding0411", "Dermatology", "Dermatologists");
 
     @Test
     public void a_create() {
@@ -66,7 +66,7 @@ public class DoctorControllerTest {
 
         System.out.println("Post Data: " + updateDoctor);
         ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(url, updateDoctor, Doctor.class);
-        assertEquals(doctor.getDocId(), postResponse.getBody().getDocId());
+        assertEquals(doctor.getDept(), postResponse.getBody().getDept());
     }
 
     @Test

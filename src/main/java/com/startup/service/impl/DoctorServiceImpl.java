@@ -1,6 +1,5 @@
 package com.startup.service.impl;
 
-import com.startup.Repository.impl.AccountRepositoryImpl;
 import com.startup.Repository.impl.DoctorRepository;
 import com.startup.Repository.impl.DoctorRepositoryImpl;
 import com.startup.entity.Doctor;
