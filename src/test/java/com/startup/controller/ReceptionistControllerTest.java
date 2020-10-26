@@ -25,7 +25,7 @@ public class ReceptionistControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate = new TestRestTemplate();
-    private String baseURL = "https://localhost:8080/receptionist";
+    private String baseURL = "https://localhost:8080/receptionist/";
 
 
     @Test
@@ -38,7 +38,7 @@ public class ReceptionistControllerTest {
         assertNotNull(postResponse.getBody());
         receptionist = postResponse.getBody();
         System.out.println("recep saved" + receptionist);
-        assertEquals(receptionist.getAdminId(),postResponse.getBody().getAdminId());
+        assertEquals(receptionist.getAdminId(),postResponse.getBody().getAd minId());
     }
 
     @Test
