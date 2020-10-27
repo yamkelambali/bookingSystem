@@ -3,51 +3,50 @@ package com.startup.service.impl;
  * @author Yamkela Mbali
  */
 import com.startup.Repository.impl.AccountRepository;
-import com.startup.Repository.impl.AccountRepositoryImpl;
-import com.startup.Repository.impl.UserRepositoryImpl;
 import com.startup.entity.Account;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-    private static AccountService service = null;
+
+    @Autowired
     private AccountRepository repository;
 
-    private AccountServiceImpl() {
-
-        this.repository = AccountRepositoryImpl.getRepository();
-    }
-
-    public static AccountService getService() {
-        if(service == null) service = new AccountServiceImpl();
-        return service;
-    }
-
     @Override
-    public Set<Account> getAll() {
-        return this.repository.getAll();
+    public Set<Account> getAll()
+    {
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
     public Account create(Account account) {
-        return this.repository.create(account);
+
+        return this.repository.save(account);
     }
 
     @Override
     public Account read(String s) {
-        return this.repository.read(s);
+
+        return this.repository.findById(s).orElse(null);
     }
 
     @Override
-    public Account update(Account account) {
-        return this.repository.update(account);
+    public Account update(Account account)
+    {
+
+        return this.repository.save(account);
     }
 
     @Override
     public boolean delete(String s) {
-        return this.repository.delete(s);
+
+        this.repository.deleteById(s);
+        if (this.repository.existsById(s)) return false;
+        else return true;
     }
 }

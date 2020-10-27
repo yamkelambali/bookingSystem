@@ -1,16 +1,21 @@
 package com.startup.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * @author Yamkela Mbali
  * desc : Entity for User
  */
+
+@Entity
 public class User{
+    @Id
+    private String username;
+    private String password, userId, name, surname, cellNo, emailAddress;
 
-    private String username, password, userId, name, surname, cellNo, emailAddress;
-
-    private User(){}
+    protected User(){}
 
     private User(Builder builder){
         this.username = builder.username;

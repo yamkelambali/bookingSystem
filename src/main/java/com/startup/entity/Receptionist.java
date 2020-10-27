@@ -1,6 +1,8 @@
 package com.startup.entity;
 
-public class Receptionist {
+import java.io.Serializable;
+
+public class Receptionist implements Serializable {
 
 
     private String adminId, qualification;
