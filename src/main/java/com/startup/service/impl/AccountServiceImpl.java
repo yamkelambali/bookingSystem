@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-    private static AccountService service = null;
+
     @Autowired
     private AccountRepository repository;
 
@@ -38,6 +38,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account update(Account account)
     {
+
         return this.repository.save(account);
     }
 
