@@ -3,7 +3,6 @@ package com.startup.service.impl;
  * @author Yamkela Mbali
  */
 import com.startup.Repository.impl.AccountRepository;
-import com.startup.Repository.impl.AccountRepositoryImpl;
 import com.startup.entity.Account;
 import com.startup.entity.User;
 import com.startup.factory.AccountFactory;
@@ -11,6 +10,7 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Set;
 
@@ -18,7 +18,8 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AccountServiceImplTest {
 
-    private static AccountService service = AccountServiceImpl.getService();
+    @Autowired
+    private static AccountService service;
     private static Account account = AccountFactory.createAccount("John", "Wick", "BoogieMan", "123","123");
 
     @Test

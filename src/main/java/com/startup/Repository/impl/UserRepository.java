@@ -2,12 +2,13 @@ package com.startup.Repository.impl;
 /*
   @author Lené Prinsloo
  */
-import com.startup.Repository.IRepository;
 import com.startup.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Set;
+@Repository
+public interface UserRepository extends JpaRepository<User, String>{
 
-public interface UserRepository extends IRepository <User, String> {
-
-    Set<User> getAll();
 }
+

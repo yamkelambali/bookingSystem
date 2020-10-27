@@ -3,13 +3,13 @@ package com.startup.service.impl;
  * @author Yamkela Mbali
  */
 import com.startup.Repository.impl.UserRepository;
-import com.startup.Repository.impl.UserRepositoryImpl;
 import com.startup.entity.User;
 import com.startup.factory.UserFactory;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Set;
 
@@ -17,7 +17,8 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserServiceImplTest {
 
-    private static UserService service = UserServiceImpl.getService();
+    @Autowired
+    private static UserService service;
     private static User user = UserFactory.createUser("lprinsloo", "prinsloo50", "Lene", "Prinsloo", "0810488240", "prinsloolene@gmail.com");
 
     @Test

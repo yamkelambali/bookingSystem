@@ -1,12 +1,16 @@
 package com.startup.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
+@Entity
 public class Account {
+    @Id
+    private String username;
+    private String name, surname, password, cellNo;
 
-    private String name, surname, username, password, cellNo;
-
-    private Account(){};
+    protected Account(){};
 
     private Account(Builder builder){
         this.name = builder.name;
