@@ -1,54 +1,47 @@
 package com.startup.service.impl;
 
 import com.startup.Repository.impl.BillRepository;
-import com.startup.Repository.impl.BillRepositoryImpl;
 import com.startup.entity.Bill;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-@Service
+import java.util.stream.Collectors;
 
+@Service
 public class BillServiceImpl implements BillService {
 
-    private static BillService service = null;
+    @Autowired
     private BillRepository repository;
-
-    private BillServiceImpl() {
-        this.repository = BillRepositoryImpl.getRepository();
-    }
-
-    public static BillService getBill() {
-        if (service == null) service = new BillServiceImpl();
-        return service;
-    }
 
     @Override
     public Set<Bill> getAll() {
-
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
     public Bill create(Bill bill) {
-
-        return this.repository.create(bill);
+        return this.repository.save(bill);
     }
 
     @Override
     public Bill read(String a) {
-        return this.repository.read(a);
+        return this.repository.findById(a).orElse(null);
     }
 
     @Override
     public Bill update(Bill bill) {
-
-        return this.repository.update(bill);
+        if (this.repository.existsById(bill.getBillNo())) {
+            return this.repository.save(bill);
+        }
+        return null;
     }
 
     @Override
     public boolean delete(String a) {
-
-        return this.repository.delete(a);
+        this.repository.deleteById(a);
+        if (this.repository.existsById(a)) return false;
+        else return true;
     }
 
 }
