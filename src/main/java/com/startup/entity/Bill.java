@@ -1,16 +1,20 @@
 package com.startup.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
-/**
- * @author Yamkela Mbali
- * desc : Entity for User
- */
-public class Bill implements Serializable {
+@Entity
+public class Bill {
 
-    private String billNo, appointId, patientId, amount;
+    @Id
+    private String billNo;
+    private String appointId;
+    private String patientId;
+    private String amount;
 
-    private Bill(){}
+    protected Bill(){}
 
     private Bill(Builder builder){
         this.billNo = builder.billNo;
@@ -78,5 +82,18 @@ public class Bill implements Serializable {
         public Bill build(){
             return new Bill (this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bill bill = (Bill) o;
+        return billNo.equals(bill.billNo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(billNo);
     }
 }
