@@ -1,19 +1,27 @@
 package com.startup.entity;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.print.Doc;
+import java.util.Objects;
 
 /**
  * @author Lene Prinsloo
  * desc : Entity for Doctor
  */
 
-public class Doctor implements Serializable {
+@Entity
+public class Doctor {
 
-    private String docId, dept, specialisation;
+    @Id
+    private String docId;
+    private String dept;
+    private String specialisation;
 
-    private Doctor(){}
+    protected Doctor() {
+    }
 
-    private Doctor(Builder builder){
+    private Doctor(Builder builder) {
         this.docId = builder.docId;
         this.dept = builder.dept;
         this.specialisation = builder.specialisation;
@@ -58,7 +66,7 @@ public class Doctor implements Serializable {
             return this;
         }
 
-        public Builder copy(Doctor doctor){
+        public Builder copy(Doctor doctor) {
             this.docId = doctor.docId;
             this.dept = doctor.dept;
             this.specialisation = doctor.specialisation;
@@ -66,6 +74,23 @@ public class Doctor implements Serializable {
             return this;
         }
 
-        public Doctor build(){ return new Doctor(this);}
+        public Doctor build() {
+            return new Doctor(this);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Doctor doctor = (Doctor) o;
+        return docId.equals(doctor.docId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(docId);
     }
 }
