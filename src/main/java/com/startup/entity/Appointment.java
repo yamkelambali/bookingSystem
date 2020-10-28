@@ -1,18 +1,29 @@
 package com.startup.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Objects;
 
 /**
  * @author Lene Prinsloo
  * desc : Entity for Appointment
  */
 
+@Entity
 public class Appointment {
 
-    private String appointID, patientNo, docID;
+    @Id
+    private String appointID;
+    private String patientNo;
+    private String docID;
     private LocalDate localDate;
     private LocalTime localTime;
+
+    protected Appointment(){
+
+    }
 
     public Appointment(Builder builder){
         this.appointID = builder.appointID;
@@ -94,4 +105,16 @@ public class Appointment {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Appointment that = (Appointment) o;
+        return appointID.equals(that.appointID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(appointID);
+    }
 }

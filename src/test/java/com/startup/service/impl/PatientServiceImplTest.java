@@ -11,20 +11,21 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.*;
+import java.util.Set;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PatientServiceImplTest {
 
-    private static PatientService service = PatientServiceImpl.getService();
+    @Autowired
+    private static PatientService service;
     private static Patient patient = PatientFactory.createPatient("0706CP071401", "Upcoming Appointment: CP071401, Harding0411, Dermatologist, 07/06/2020, 15:30:00", "2001200220032004");
 
     @Test
     public void d_getAll() {
         Set<Patient> patients = service.getAll();
-        assertEquals(1, patients.size());
+        Assert.assertEquals(1, patients.size());
         System.out.println("All Patients: " + service);
     }
 

@@ -1,11 +1,13 @@
 package com.startup.service.impl;
 
 import com.startup.Repository.impl.AppointmentRepository;
-import com.startup.Repository.impl.AppointmentRepositoryImpl;
+
 import com.startup.entity.Appointment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author Michael Bezuidenhout
@@ -14,39 +16,37 @@ import java.util.Set;
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
 
-    private static AppointmentService service = null;
+   @Autowired
     private AppointmentRepository repository;
-
-    private AppointmentServiceImpl() {
-        this.repository = AppointmentRepositoryImpl.getRepository();
-    }
-
-    public static AppointmentService getService() {
-        if (service == null) service = new AppointmentServiceImpl();
-        return service; }
 
     @Override
     public Set<Appointment> getAll() {
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
     public Appointment create(Appointment appointment) {
-        return this.repository.create(appointment);
+        return this.repository.save(appointment);
     }
 
     @Override
     public Appointment read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElse(null);
     }
 
     @Override
     public Appointment update(Appointment appointment) {
-        return this.repository.update(appointment);
+        if (this.repository.existsById(appointment.getAppointID())){
+            return this.repository.save(appointment);
+        }
+        return  null;
     }
+
 
     @Override
     public boolean delete(String s) {
-        return this.repository.delete(s);
+        this.repository.deleteById(s);
+        if (this.repository.existsById(s)) return false;
+        return  true;
     }
 }
