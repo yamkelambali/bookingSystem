@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ReceptionistServiceImplTest {
 
-    private static ReceptionistService service = ReceptionistServiceImpl.getService();
+    private static ReceptionistService service;
     private static Receptionist receptionist = ReceptionistFactory.createReceptionist("Office Administration");
 
     @Test

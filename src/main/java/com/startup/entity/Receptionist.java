@@ -1,11 +1,18 @@
 package com.startup.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
+@Entity
 public class Receptionist implements Serializable {
 
+    @Id
+    private String adminId;
+    private String qualification;
 
-    private String adminId, qualification;
+    protected Receptionist(){}
 
     private Receptionist(Receptionist.Builder builder){
         this.adminId = builder.adminId;
@@ -52,6 +59,16 @@ public class Receptionist implements Serializable {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Receptionist that = (Receptionist) o;
+        return adminId.equals(that.adminId);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(adminId);
+    }
 }
