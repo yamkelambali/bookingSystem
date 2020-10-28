@@ -9,24 +9,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("Bill")
+@RequestMapping("/bill")
 public class BillController {
 
     @Autowired
     public BillServiceImpl billService;
 
-    @RequestMapping(value = "/generate")
-    public Bill create(Bill bill){
+    @PostMapping(value = "/generate")
+    public Bill create(@RequestBody Bill bill){
         Bill newBill = BillFactory.generateBill(bill.getAmount(),
                 bill.getPatientId(),
                 bill.getAppointId());
         return billService.create(newBill);
 
-        }
+    }
 
-    @GetMapping("/read")
-    public Bill read(@PathVariable String bill){
-        return  billService.read(bill);
+    @GetMapping("/read/{billNo}")
+    public Bill read(@PathVariable String billNo){
+        return  billService.read(billNo);
     }
 
     @PostMapping("/update")
