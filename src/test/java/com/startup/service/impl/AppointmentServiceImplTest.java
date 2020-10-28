@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppointmentServiceImplTest {
 
-    private static AppointmentService service = AppointmentServiceImpl.getService();
+    private static AppointmentService service;
     private static Appointment appointment = AppointmentFactory.createAppointment("0706CP071401", "CP071401", "Harding0411", LocalDate.of(2020,8,25), LocalTime.of(15,0));
 
     @Test
