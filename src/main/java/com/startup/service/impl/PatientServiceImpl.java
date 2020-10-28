@@ -1,11 +1,12 @@
 package com.startup.service.impl;
 
 import com.startup.Repository.impl.PatientRepository;
-import com.startup.Repository.impl.PatientRepositoryImpl;
 import com.startup.entity.Patient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author Lene Prinsloo.
@@ -15,40 +16,37 @@ import java.util.Set;
 @Service
 public class PatientServiceImpl implements PatientService{
 
-    private static PatientService service = null;
+    @Autowired
     private PatientRepository repository;
-
-    private PatientServiceImpl() {
-        this.repository = PatientRepositoryImpl.getRepository();
-    }
-
-    public static PatientService getService() {
-        if(service == null) service = new PatientServiceImpl();
-        return service;
-    }
 
     @Override
     public Set<Patient> getAll() {
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
     public Patient create(Patient patient) {
-        return this.repository.create(patient);
+        return this.repository.save(patient);
     }
 
     @Override
     public Patient read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElse(null);
     }
 
     @Override
     public Patient update(Patient patient) {
-        return this.repository.update(patient);
+        return this.repository.save(patient);
     }
 
     @Override
     public boolean delete(String s) {
-        return this.repository.delete(s);
+
+        this.repository.deleteById(s);
+        if (this.repository.existsById(s))
+            return false;
+        else
+            return true;
+
     }
 }
