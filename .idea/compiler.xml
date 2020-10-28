@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bookingSystem-master" />
-        <module name="bookingSytem" />
         <module name="bookingSystem" />
+        <module name="bookingSytem" />
+        <module name="bookingSystem-master" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
