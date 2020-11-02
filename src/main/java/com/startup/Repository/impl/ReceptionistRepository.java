@@ -1,11 +1,10 @@
 
 package com.startup.Repository.impl;
 
-import com.startup.Repository.IRepository;
 import com.startup.entity.Receptionist;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Set;
-
-public interface ReceptionistRepository extends IRepository<Receptionist, String> {
-    Set<Receptionist> getAll();
-}
+@Repository
+public interface ReceptionistRepository extends JpaRepository<Receptionist, String>{}
