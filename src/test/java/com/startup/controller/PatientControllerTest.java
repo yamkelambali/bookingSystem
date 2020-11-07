@@ -57,7 +57,9 @@ public class PatientControllerTest {
         String url = baseURL + "read/" + patient.getPatientId();
         System.out.println("URL: " + url);
 
-        ResponseEntity<Patient> getResponse = restTemplate.getForEntity(url, Patient.class);
+        ResponseEntity<Patient> getResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .getForEntity(url, Patient.class);
 
         assertEquals(patient.getPatientId(), getResponse.getBody().getPatientId());
         System.out.println(getResponse.getBody());
@@ -88,7 +90,9 @@ public class PatientControllerTest {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
 
         System.out.println(response);
         System.out.println(response.getBody());
