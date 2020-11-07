@@ -28,17 +28,20 @@ public class DoctorControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/doctor/";
+    private String baseURL = "http://localhost:8080/bookingSystem/doctor/";
 
     private static Doctor doctor = DoctorFactory.createDoctor("Harding0411", "Dermatology", "Dermatologists");
-
+    private static String SECURITY_USERNAME = "client";
+    private static String SECURITY_PASSWORD = "kkdmmc";
     @Test
     public void a_create() {
         String url = baseURL + "create";
         System.out.println("URL: " + url);
         System.out.println("Post Data: " + doctor);
 
-        ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(url, doctor, Doctor.class);
+        ResponseEntity<Doctor> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, doctor, Doctor.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
@@ -52,7 +55,9 @@ public class DoctorControllerTest {
         String url = baseURL + "read/" + doctor.getDocId();
         System.out.println("URL: " + url);
 
-        ResponseEntity<Doctor> getResponse = restTemplate.getForEntity(url, Doctor.class);
+        ResponseEntity<Doctor> getResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .getForEntity(url, Doctor.class);
 
         assertEquals(doctor.getDocId(), getResponse.getBody().getDocId());
         System.out.println(getResponse.getBody());
@@ -84,7 +89,9 @@ public class DoctorControllerTest {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
 
         System.out.println(response);
         System.out.println(response.getBody());
