@@ -28,17 +28,20 @@ public class DoctorControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/doctor/";
+    private String baseURL = "http://localhost:8080/bookingSystem/doctor/";
 
     private static Doctor doctor = DoctorFactory.createDoctor("Harding0411", "Dermatology", "Dermatologists");
-
+    private static String SECURITY_USERNAME = "client";
+    private static String SECURITY_PASSWORD = "kkdmmc";
     @Test
     public void a_create() {
         String url = baseURL + "create";
         System.out.println("URL: " + url);
         System.out.println("Post Data: " + doctor);
 
-        ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(url, doctor, Doctor.class);
+        ResponseEntity<Doctor> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, doctor, Doctor.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 

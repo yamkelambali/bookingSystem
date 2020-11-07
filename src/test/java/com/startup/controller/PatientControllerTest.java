@@ -29,17 +29,21 @@ public class PatientControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/patient/";
+    private String baseURL = "http://localhost:8080/bookingSystem/patient/";
+
 
     private static Patient patient = PatientFactory.createPatient("0706CP071401", "Upcoming Appointment: CP071401, Harding0411, Dermatologist, 07/06/2020, 15:30:00", "2001200220032004");
-
+    private static String SECURITY_USERNAME = "client";
+    private static String SECURITY_PASSWORD = "kkdmmc";
     @Test
     public void a_create() {
         String url = baseURL + "create";
         System.out.println("URL: " + url);
         System.out.println("Post Data: " + patient);
 
-        ResponseEntity<Patient> postResponse = restTemplate.postForEntity(url, patient, Patient.class);
+        ResponseEntity<Patient> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, patient, Patient.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
