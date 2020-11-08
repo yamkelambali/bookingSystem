@@ -20,12 +20,12 @@ import java.time.LocalTime;
 
 import static org.junit.Assert.*;
 
-@SpringBootTest(webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppointmentControllerTest {
 
-    private static Appointment appointment = AppointmentFactory.createAppointment("0706CP071401", "CP071401", "Harding0411", LocalDate.of(2020,8,25), LocalTime.of(15,0) );
+    private static Appointment appointment = AppointmentFactory.createAppointment("0706CP071401", "CP071401", "Harding0411", LocalDate.of(2020, 8, 25), LocalTime.of(15, 0));
 
     @Autowired
     private TestRestTemplate restTemplate = new TestRestTemplate();
@@ -51,7 +51,7 @@ public class AppointmentControllerTest {
     public void d_getAll() {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> entity = new HttpEntity<>(null,headers);
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println(response);
         System.out.println(response.getBody());
@@ -62,7 +62,7 @@ public class AppointmentControllerTest {
         String url = baseURL + "read/" + appointment.getAppointID();
         System.out.println("URL: " + url);
         ResponseEntity<Appointment> response = restTemplate.getForEntity(url, Appointment.class);
-        assertEquals(appointment.getAppointID(),response.getBody().getAppointID());
+        assertEquals(appointment.getAppointID(), response.getBody().getAppointID());
     }
 
     @Test
