@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
 public class UserControllerTest {
 
     private static User user = UserFactory.createUser("BoogyMan", "JW1243", "John", "Wick", "087123457", "test@gmail.com");
-    private static String SECURITY_USERNAME = "lene";
+    private static String SECURITY_USERNAME = "lenep";
     private static String SECURITY_PASSWORD = "password";
 
     @Autowired
