@@ -23,7 +23,9 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AccountControllerTest {
 
-    private static Account account = AccountFactory.createAccount("Tony", "Stark", "BoogieMan", "123","123");
+    private static Account account = AccountFactory.createAccount("Tony", "Stark", "BoogieMan", "123", "123");
+    private static String SECURITY_USERNAME = "lene";
+    private static String SECURITY_PASSWORD = "password";
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -34,7 +36,9 @@ public class AccountControllerTest {
         String url = baseURL + "create";
         System.out.println("URL" + url);
         System.out.println("POST data: " + account);
-        ResponseEntity<Account> postResponse = restTemplate.postForEntity(url, account, Account.class);
+        ResponseEntity<Account> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, account, Account.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
@@ -47,7 +51,9 @@ public class AccountControllerTest {
     public void b_read() {
         String url = baseURL + "read/" + account.getUsername();
         System.out.println("URL: " + url);
-        ResponseEntity<Account> response = restTemplate.getForEntity(url, Account.class);
+        ResponseEntity<Account> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .getForEntity(url, Account.class);
         assertEquals(account.getUsername(), response.getBody().getUsername());
     }
 
@@ -57,7 +63,9 @@ public class AccountControllerTest {
         String url = baseURL + "update";
         System.out.println("URL: " + url);
         System.out.println("Updated details: " + updatedAccount);
-        ResponseEntity<Account> response = restTemplate.postForEntity(url, updatedAccount, Account.class);
+        ResponseEntity<Account> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, updatedAccount, Account.class);
         assertEquals(account.getUsername(), response.getBody().getUsername());
     }
 
@@ -66,7 +74,9 @@ public class AccountControllerTest {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println(response);
         System.out.println(response.getBody());
     }
@@ -75,6 +85,8 @@ public class AccountControllerTest {
     public void e_delete() {
         String url = baseURL + "delete/" + account.getUsername();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .delete(url);
     }
 }
