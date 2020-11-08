@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/bill")
+@RequestMapping("/bookingSystem/bill")
 public class BillController {
 
     @Autowired
