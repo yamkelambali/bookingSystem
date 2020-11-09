@@ -24,7 +24,7 @@ public class ReceptionistControllerTest {
 
     private static Receptionist receptionist = ReceptionistFactory.createReceptionist("Office Administration" );
     private static String SECURITY_USERNAME = "user";
-    private static String SECURITY_PASSWORD = "password";
+    private static String SECURITY_PASSWORD = "1v482jj";
 
 
     @Autowired

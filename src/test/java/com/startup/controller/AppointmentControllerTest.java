@@ -30,8 +30,8 @@ import static org.junit.Assert.*;
 public class AppointmentControllerTest {
 
     private static Appointment appointment = AppointmentFactory.createAppointment("0706CP071401", "CP071401", "Harding0411", LocalDate.of(2020,8,25), LocalTime.of(15,0) );
-    private static String SECURITY_USERNAME = "Ana";
-    private static String SECURITY_PASSWORD = "0000";
+    private static String SECURITY_USERNAME = "user";
+    private static String SECURITY_PASSWORD = "1v482jj";
 
     @Autowired
     private TestRestTemplate restTemplate = new TestRestTemplate();
