@@ -4,6 +4,7 @@ import com.startup.entity.Account;
 import com.startup.entity.Bill;
 import com.startup.factory.BillFactory;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -25,18 +26,22 @@ import static org.junit.Assert.*;
 public class BillControllerTest {
 
     private static Bill bill = BillFactory.generateBill("120456", "54778888", "1500");
+    private String SECURITY_USERNAME = "Michael_ADMIN";
+    private String SECURITY_PASSWORD = "321";
 
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/bill/";
+    private String baseURL = "http://localhost:8080/bookingSystem/bill/";
 
     @Test
     public void a_create() {
         String url = baseURL + "generate";
         System.out.println("URL: " + url);
         System.out.println("POST data: " + bill);
-        ResponseEntity<Bill> postResponse = restTemplate.postForEntity(url, bill, Bill.class);
+        ResponseEntity<Bill> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, bill, Bill.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
@@ -49,7 +54,9 @@ public class BillControllerTest {
     public void b_read() {
         String url = baseURL + "read/" + "d6d82234-8294-47f0-9374-e2227501a065";
         System.out.println("URL: " + url);
-        ResponseEntity<Bill> response = restTemplate.getForEntity(url, Bill.class);
+        ResponseEntity<Bill> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .getForEntity(url, Bill.class);
         System.out.println("RESPONSE: " + response.getBody());
         //assertEquals(bill.getBillNo(), response.getBody().getBillNo());
     }
@@ -65,7 +72,9 @@ public class BillControllerTest {
         String url = baseURL + "update";
         System.out.println("URL: " + url);
         System.out.println("Updated bill: " + updatedBill);
-        ResponseEntity<Bill> response = restTemplate.postForEntity(url, updatedBill, Bill.class);
+        ResponseEntity<Bill> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, updatedBill, Bill.class);
         assertEquals(bill.getBillNo(), response.getBody().getBillNo());
     }
 
@@ -75,15 +84,18 @@ public class BillControllerTest {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME,SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println(response);
         System.out.println(response.getBody());
     }
 
     @Test
+    @Ignore
     public void e_delete() {
         String url = baseURL + "delete/" + bill.getBillNo();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
     }
 }

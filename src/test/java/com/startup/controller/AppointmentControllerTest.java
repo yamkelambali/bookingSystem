@@ -24,14 +24,12 @@ import java.time.LocalTime;
 
 import static org.junit.Assert.*;
 
-@SpringBootTest(webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppointmentControllerTest {
 
-    private static Appointment appointment = AppointmentFactory.createAppointment("0706CP071401", "CP071401", "Harding0411", LocalDate.of(2020,8,25), LocalTime.of(15,0) );
-    private static String SECURITY_USERNAME = "user";
-    private static String SECURITY_PASSWORD = "1v482jj";
+
 
     @Autowired
     private TestRestTemplate restTemplate = new TestRestTemplate();
@@ -59,23 +57,7 @@ public class AppointmentControllerTest {
     public void d_getAll() {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> entity = new HttpEntity<>(null,headers);
-        ResponseEntity<String> response = restTemplate.
-                withBasicAuth(SECURITY_USERNAME,SECURITY_PASSWORD).
-                exchange(url, HttpMethod.GET, entity, String.class);
-        System.out.println(response);
-        System.out.println(response.getBody());
-    }
 
-    @Test
-    public void b_read() {
-        String url = baseURL + "read/" + appointment.getAppointID();
-        System.out.println("URL: " + url);
-        ResponseEntity<Appointment> response = restTemplate
-                .withBasicAuth(SECURITY_USERNAME,SECURITY_PASSWORD)
-                .getForEntity(url, Appointment.class);
-        System.out.println("RESPONSE: " + response.getBody());
-        //assertEquals(appointment.getAppointID(),response.getBody().getAppointID());
     }
 
     @Test
