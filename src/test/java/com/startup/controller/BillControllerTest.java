@@ -26,6 +26,7 @@ public class BillControllerTest {
 
     private static Bill bill = BillFactory.generateBill("120456", "54778888", "1500");
 
+
     @Autowired
     private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/bill/";
