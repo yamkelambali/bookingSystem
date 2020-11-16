@@ -41,15 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("Client")
                 .password("{noop}kkdmmc")
-                .roles(USER_ROLE)
-                .and()
-                .withUser("Michael")
-                .password(encoder().encode("123"))
-                .roles(USER_ROLE)
-                .and()
-                .withUser("Michael_ADMIN")
-                .password(encoder().encode("321"))
-                .roles(ADMIN_ROLE, USER_ROLE);
 
     }
 
