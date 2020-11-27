@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Set<User> getAll() {
-
         return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
