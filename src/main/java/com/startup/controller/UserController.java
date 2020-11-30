@@ -5,6 +5,7 @@ import com.startup.factory.UserFactory;
 import com.startup.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Set;
 
@@ -14,6 +15,17 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
+
+
+
+    @RequestMapping("/list")
+    public ModelAndView list(){
+        ModelAndView model = new ModelAndView("user_list");
+        Set<User> userSet = userService.getAll();
+        model.addObject("userSet", userSet);
+        return model;
+    }
+
 
     @PostMapping("/create")
     public User create(@RequestBody User user){
