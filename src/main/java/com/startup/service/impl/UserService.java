@@ -9,7 +9,22 @@ import java.util.List;
 import java.util.Set;
 
 public interface UserService extends IService <User, String> {
+    List<User> userList();
 
-    Set<User> getAll();
+//    User findOne(Long id);
 
+    User findById(Long id);
+
+    User addUser(User user);
+
+    String deleteById(Long id);
+//    <User> getAll();
+//
+//    User getUserById(String id);
+//
+//    User create(User user);
+//
+//    void createUser(User user);
+//
+//    void deleteUserById(String id);
 }
